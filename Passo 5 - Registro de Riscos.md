@@ -4,8 +4,8 @@
 | --- | ------------------------| ------------------------------------------------------------------------------------| ----------------------------------------------------------------------------------------- | ------------- | ------- | --------- | -------- |
 | R01 | Spoofing                | O atacante acessa o cadastro do usuário interno e obtem informações confidênciais   | Credenciais comprometidas e falta de verificação adicional ao acessar cadastro            | 3             | 4       | 12        | Crítico  |
 | R02 | Tampering               | O banco de dados é invadido e informações são alteradas                             | Ausência de criptografia de rede ou software desatualizado                                | 2             | 4       | 8         | Alto     |
-| R03 | Repudiation             | Um usuário não realiza o pagamento e afirma não ter recebido o comprovante          | Logs e registros de pagamentos não existentes ou deletados                                | 3             | 3       | 9         | Alto     |
-| R04 | Information Disclosure  | O cadastro do usuário é acessado de forma não autorizada e informações são expostas | Erros na autorização de acesso e validação de registro pouco efetiva                      | 3             | 3       | 6         | Médio    | 
+| R03 | Repudiation             | Um usuário não realiza o pagamento e afirma não ter recebido o comprovante          | Logs e registros de pagamentos não existentes ou deletados                                | 2             | 3       | 6         | Médio    |
+| R04 | Information Disclosure  | O cadastro do usuário é acessado de forma não autorizada e informações são expostas | Erros na autorização de acesso e validação de registro pouco efetiva                      | 3             | 3       | 9         | Alto     | 
 | R05 | Denial of Service       | O sistema fica indisponível durante o horário de funcionamento                      | Capacidade de acessos insuficiêntes e falta de limites de acesso ou verificação de acesso | 4             | 4       | 16        | Crítico  |
 | R06 | Elevation of Privilege  | Um usuário interno obtem permissão de administrador indevidamente                   | Gerenciamento de permissão insuficiente ou ineficaz nas funcionalidades administrativas   | 2             | 4       | 8         | Alto     | 
 
@@ -25,7 +25,7 @@ O impacto foi classificado como muito alto porque todas as informações do sist
 
 #### R03 — Negação de uma operação de pagamento
 
-A probabilidade foi classificada como média-alta porque o problema depende da inexistência, insuficiência ou exclusão dos logs e registros relacionados aos pagamentos realizados armazenados no sistema.
+A probabilidade foi classificada como média-baixa porque o problema depende da inexistência, insuficiência ou exclusão dos logs e registros relacionados aos pagamentos realizados armazenados no sistema, sendo um acontecimento incomum.
 
 O impacto foi classificado como médio-alto porque a ausência de registros pode dificultar a comprovação de pagamentos, possívelmente resultando em prejuízos e a incapacidade de contestar e provar que não houve transferência.
 
