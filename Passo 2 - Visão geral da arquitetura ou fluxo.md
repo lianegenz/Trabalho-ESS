@@ -39,7 +39,7 @@ O **Quiropraxista Majoritário** possui ainda funções administrativas adiciona
 
 Dessa forma, cada perfil interage apenas com as funcionalidades necessárias ao desempenho de suas atividades dentro da clínica.
 
-![Diagrama de Casos de Uso](diagramas/diagrama-caso de uso.png)
+![Diagrama de Casos de Uso](diagramas/diagrama-caso-de-uso.png)
 
 
 ### 4.2 Diagrama de contexto
@@ -55,7 +55,7 @@ A **Secretária** interage com o sistema principalmente para realizar atividades
 
 O sistema funciona, portanto, como o ponto central de interação entre os diferentes usuários, controlando o acesso às informações conforme as permissões atribuídas a cada perfil.
 
-![Diagrama de Contexto](diagramas/diagrama- contexto.png)
+![Diagrama de Contexto](diagramas/diagrama-contexto.png)
 
 
 ### 4.3 Fluxo de dados simplificado
