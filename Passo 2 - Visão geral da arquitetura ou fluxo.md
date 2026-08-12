@@ -3,7 +3,7 @@ O sistema foi pensado para auxiliar no gerenciamento dos atendimentos de uma cl�
 
 O sistema possuirá três perfis principais de usuários: **Quiropraxista Majoritário, Quiropraxista e Secretária**. Cada usuário deverá acessar o sistema por meio de autenticação, sendo disponibilizadas apenas as funcionalidades correspondentes ao seu perfil e às permissões de acesso estabelecidas.
 
-O **Quiropraxista Majoritário** possuirá acesso mais amplo ao sistema, podendo acompanhar as atividades relacionadas aos atendimentos, prontuários e controle financeiro, além de realizar funções administrativas, como o gerenciamento de usuários e permissões.
+O **Quiropraxista Majoritário** possuirá acesso mais amplo ao sistema, podendo consultar e atualizar prontuários, além de executar funções administrativas. Entre essas funções estão o gerenciamento de usuários e permissões, bem como o controle financeiro do sistema.
 
 O **Quiropraxista** utilizará o sistema principalmente para consultar e organizar seus atendimentos e acessar os prontuários dos pacientes, registrando informações referentes às avaliações realizadas e aos procedimentos utilizados durante as consultas.
 
