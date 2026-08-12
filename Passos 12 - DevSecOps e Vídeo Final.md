@@ -69,6 +69,45 @@ Assim, o pipeline DevSecOps permite que a segurança seja tratada como uma ativi
 O ciclo também permite estabelecer uma relação entre análise de riscos, desenvolvimento, automação de testes, segurança e operação. Dessa forma, uma vulnerabilidade identificada durante a operação pode gerar uma nova atividade de planejamento, ser corrigida no código, passar novamente pelas verificações automatizadas e somente então ser disponibilizada no ambiente de produção. Isso cria um processo contínuo de detecção, correção e prevenção de vulnerabilidades ao longo de todo o ciclo de vida do sistema.
 
 
-## Condições de Parada (Break the Build): Indicar pelo menos 3 falhas que impediriam o deploy (ex: segredo no código, vulnerabilidade crítica)
+## Condições de Parada (Break the Build):
+
+Durante o pipeline DevSecOps, algumas falhas de segurança deverão impedir o avanço da aplicação para as próximas etapas ou o seu deploy. Essas condições têm como objetivo evitar que vulnerabilidades conhecidas ou informações sensíveis cheguem ao ambiente de produção.
+
+As principais condições de parada definidas para o sistema são:
+
+**1. Secret ou credencial encontrada no código**
+
+Caso sejam identificadas senhas, tokens, chaves de API ou credenciais de banco de dados diretamente no código ou no repositório, o pipeline deverá ser interrompido. O desenvolvedor deverá remover a informação sensível e utilizar um mecanismo adequado para armazenamento de secrets.
+
+**2. Vulnerabilidade crítica identificada no código**
+
+Caso a análise SAST, realizada por ferramentas como o CodeQL, identifique uma vulnerabilidade classificada como crítica, o pipeline deverá impedir o deploy até que o problema seja corrigido e uma nova análise seja realizada.
+
+**3. Vulnerabilidade crítica ou de alto risco em dependências**
+
+Caso uma biblioteca utilizada pelo sistema possua uma vulnerabilidade conhecida com nível de risco considerado crítico, a aplicação não deverá ser disponibilizada até que a dependência seja atualizada ou que seja definida uma medida de correção adequada.
+
+**4. Falha nos testes de segurança ou autorização**
+
+Caso os testes identifiquem que um usuário consegue acessar uma funcionalidade que não pertence ao seu perfil, o pipeline deverá ser interrompido. Por exemplo, se um Quiropraxista conseguir acessar uma funcionalidade exclusiva do Quiropraxista Majoritário, o deploy deverá ser bloqueado.
+
+**5. Falha nos testes automatizados**
+
+Caso os testes necessários para validar o funcionamento da aplicação apresentem falhas, a alteração não deverá avançar para produção. Isso evita que uma alteração aparentemente simples cause problemas em funcionalidades existentes.
+
+**6. Falha na compilação ou construção da aplicação**
+
+Caso o projeto não consiga ser compilado ou construído corretamente, o pipeline deverá ser interrompido, pois não será possível garantir que a versão gerada esteja funcionando corretamente.
+
+### Resumo das Condições
+
+| Condição | Ação do Pipeline |
+| --- | --- |
+| Secret ou credencial encontrada no código | Bloquear Deploy |
+| Vulnerabilidade crítica identificada no código | Bloquear Deploy |
+| Vulnerabilidade crítica ou de alto risco em dependências| Bloquear Deploy |
+| Falha nos testes de segurança ou autorização | Bloquear Deploy |
+| Falha nos testes automatizados| Bloquear Deploy |
+| Falha na compilação ou construção da aplicação | Bloquear Deploy |
 
 ## Roteiro do Vídeo Final: Estruturar a fala e os pontos de demonstração da evolução do projeto (5 a 8 minutos)
