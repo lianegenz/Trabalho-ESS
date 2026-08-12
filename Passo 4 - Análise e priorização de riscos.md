@@ -32,7 +32,7 @@ Para determinar o nível de cada risco, foram considerados os seguintes aspectos
 
 ### 8.3 Cálculo e classificação
 
-A determinação da pontuação de cada risco é calculada da seguinte forma:
+Para este projeto, foram definidos os seguintes intervalos de classificação:
 
 `Pontuação = Probabilidade × Impacto`
 
