@@ -34,11 +34,11 @@ A decisão de aceitar um risco não representa a ausência de medidas de seguran
 
 | Risco | Nível inicial | Estratégia principal | Justificativa |
 | --- | --- | --- | --- |
-| R05 — Indisponibilidade do sistema                    | Crítico | Reduzir e compartilhar     | A clínica pode utilizar serviços externos de verificação de bots ao acessar o site                            |
-| R01 — Acesso indevido ao cadastro de um administrador | Crítico | Reduzir                    | O cadastro precisa estar ativo, podendo receber outras camadas de autênticação                                | 
-| R04 — Exposição de informações do usuário interno     | Alto    | Reduzir                    | Os dados precisam ser amazenados de maneira segura e monitorados contra ameaças                               |                                                                            
+| R05 — Indisponibilidade do sistema                    | Crítico | Reduzir e compartilhar     | A clínica pode utilizar serviços externos de verificação de bots ao acessar o sistema                          |
+| R01 — Acesso indevido ao cadastro de um usuário legítimo | Crítico | Reduzir                    | O cadastro precisa estar ativo, podendo receber outras camadas de autenticação                                | 
+| R04 — Exposição não autorizada de informações dos pacientes | Alto    | Reduzir                    | Os dados precisam ser armazenados de maneira segura e monitorados contra ameaças                               |                                                                            
 | R02 — Alterações não autorizadas no banco de dados    | Alto    | Reduzir                    | Os dados precisam estar ativos para o sistema, com maior proteção contra ataques                              |
-| R06 — Acesso indevido a permissões administrativas    | Alto    | Reduzir                    | Alguns usuários necessitam de permissão administrativa mas o acesso deve requerer uma verificação mais rigída |
+| R06 — Acesso indevido a permissões administrativas    | Alto    | Reduzir                    | Alguns usuários necessitam de permissão administrativa mas o acesso deve requerer uma verificação mais rígida |
 | R03 — Negação de uma operação de pagamento            | Médio   | Reduzir e aceitar residual | Registros armazenados que sejam confiáveis reduzem o risco, mas possíveis erros ainda podem existir           |
 
 
@@ -46,10 +46,10 @@ A decisão de aceitar um risco não representa a ausência de medidas de seguran
 
 | Risco | Govern | Identify | Protect | Detect | Respond | Recover |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: |
-| R01 — Acesso indevido ao cadastro de um administrador  | X | X | X | X | X | X |
+| R01 — Acesso ao sistema utilizando a identidade de um usuário legítimo  | X | X | X | X | X | X |
 | R02 — Alterações não autorizadas no banco de dados     | X | X | X | X | X | X |
 | R03 — Negação de uma operação de pagamento             | X |  | X | X | X |  |
-| R04 — Exposição de informações do usuário interno      | X | X | X | X | X | X |
+| R04 — Exposição não autorizada de informações dos pacientes      | X | X | X | X | X | X |
 | R05 — Indisponibilidade do sistema                     | X | X | X | X | X | X |
 | R06 — Acesso indevido a permissões administrativas     | X | X | X | X | X |  |
 
@@ -59,10 +59,10 @@ A associação apresentada indica quais funções do NIST CSF devem ser consider
 
 | Risco | Medidas propostas | Funções relacionadas| Responsáveis | Formas de verificação |
 | --- | --- | --- | --- | --- |
-| R01 — Acesso indevido ao cadastro de um administrador | Autenticação multifator; confirmação adicional para operações sensíveis; encerramento adequado das sessões; notificações sobre operações relevantes; bloqueio após tentativas suspeitas | Protect, Detect, Respond e Recover | Equipe de desenvolvimento, infraestrutura e administração do sistema | Testes de autenticação; análise dos registros de acesso; simulação de comprometimento de conta; verificação do funcionamento das notificações |
+| R01 — Acesso ao sistema utilizando a identidade de um usuário legítimo | Autenticação multifator; confirmação adicional para operações sensíveis; encerramento adequado das sessões; notificações sobre operações relevantes; bloqueio após tentativas suspeitas | Protect, Detect, Respond e Recover | Equipe de desenvolvimento, infraestrutura e administração do sistema | Testes de autenticação; análise dos registros de acesso; simulação de comprometimento de conta; verificação do funcionamento das notificações |
 | R02 — Alterações não autorizadas no banco de dados | Validação das informações no servidor; autorização para operações de alteração; mecanismos de integridade; histórico de alterações; possibilidade de recuperação de informações anteriores | Protect, Detect, Respond e Recover | Equipe de desenvolvimento, infraestrutura e responsáveis pelos processos da clínica | Testes de autorização; análise dos históricos; tentativas controladas de alteração; testes de recuperação de dados |
 | R03 — Negação de uma operação de pagamento | Registro de usuário, data, horário, origem e ação realizada; proteção dos logs contra alterações; sincronização dos horários dos servidores; política de retenção dos registros | Govern, Protect, Detect e Respond | Equipe de infraestrutura e administração do sistema | Consulta dos registros; testes de rastreabilidade; verificação da integridade dos logs; conferência da retenção das informações |
-| R04 — Exposição de informações do usuário interno | Controle de acesso no servidor; princípio do menor privilégio; limitação das informações apresentadas; criptografia de dados sensíveis; monitoramento de consultas suspeitas | Protect, Detect, Respond e Recover | Desenvolvimento, infraestrutura e responsáveis pela proteção dos dados | Testes de autorização; revisão de perfis; análise de registros de acesso; tentativas controladas de consulta a dados de outros usuários |
+| R04 — Exposição não autorizada de informações dos pacientes | Controle de acesso no servidor; princípio do menor privilégio; limitação das informações apresentadas; criptografia de dados sensíveis; monitoramento de consultas suspeitas | Protect, Detect, Respond e Recover | Desenvolvimento, infraestrutura e responsáveis pela proteção dos dados | Testes de autorização; revisão de perfis; análise de registros de acesso; tentativas controladas de consulta a dados de outros usuários |
 | R05 — Indisponibilidade do sistema | Limitação de requisições; monitoramento de recursos; ampliação de capacidade; mecanismos contra tráfego malicioso; redundância; plano de contingência e comunicação de indisponibilidade | Govern, Identify, Protect, Detect, Respond e Recover | Equipe de infraestrutura, gestão interna e responsáveis pela realização de agendamentos e consultas | Testes de carga; acompanhamento da disponibilidade; simulação de sobrecarga; avaliação dos alertas; execução do plano de contingência |
 | R06 — Acesso indevido a permissões administrativas | Autorização em todas as operações administrativas; princípio do menor privilégio; separação de funções; revisão periódica das permissões; autenticação reforçada para contas administrativas | Govern, Identify, Protect e Detect | Desenvolvimento, administradores do sistema e gestão interna | Testes de autorização; revisão das permissões; tentativas controladas de acesso; auditoria das contas com privilégios elevados |
 
@@ -74,9 +74,9 @@ Considerando a pontuação e a prioridade estabelecidas na análise de riscos, r
 1. **Fortalecer os mecanismos de autorização**, principalmente nas funcionalidades de cadastro e administrativas, reduzindo os riscos R02, R04 e R06.
 2. **Aumentar a proteção das contas dos usuários**, especialmente para operações que possam gerar consequências médicas relevantes, tratando o risco R01.
 3. **Implementar mecanismos confiáveis de registro e monitoramento**, contribuindo para a identificação e investigação dos riscos R01, R02, R03, R04 e R06.
-4. **Aumentar a capacidade e a disponibilidade do site durante períodos de atendimento**, priorizando o tratamento do risco R05.
+4. **Aumentar a capacidade e a disponibilidade do sistema durante períodos de atendimento**, priorizando o tratamento do risco R05.
 5. **Estabelecer procedimentos de resposta e recuperação**, permitindo que a gestão reaja de maneira organizada diante de incidentes.
-6. **Reavaliar periodicamente os riscos**, verificando se as medidas adotadas continuam adequadas diante de alterações no site, nos usuários ou no ambiente profissional.
+6. **Reavaliar periodicamente os riscos**, verificando se as medidas adotadas continuam adequadas diante de alterações no sistema, nos usuários ou no ambiente profissional.
 
 
 
