@@ -4,14 +4,24 @@ Para reduzir possíveis vulnerabilidades e ameaças serão utilizadas medidas de
 Também será importante proteger as senhas e evitar que mensagens de erro mostrem informações importantes do sistema. Essas práticas ajudam a diminuir os riscos de acessos indevidos, alterações não autorizadas no banco de dados e vazamento de informações.
 
 ### Testes de Segurança (Antes da Implementação)
-Antes de colocar o Quiagenda em funcionamento, serão realizados testes para verificar se as principais funções do sistema estão protegidas.
 
-Serão testados os diferentes tipos de usuários, como profissionais de quiropraxia e secretárias, verificando se cada um consegue acessar somente as funções permitidas. Também será verificado se um usuário consegue alterar ou visualizar informações que não deveria ter acesso.
+Antes da implementação do Quiagenda, serão realizados testes para verificar se os principais mecanismos de segurança estão funcionando corretamente. Os testes serão realizados em um ambiente separado do sistema real, evitando impactos nos dados utilizados pela clínica.
 
-Serão realizados testes nos cadastros de pacientes, prontuários e agenda, verificando se informações incorretas ou não autorizadas podem ser inseridas, alteradas ou excluídas.
+Serão considerados os seguintes testes:
 
-Também serão testados o login, as permissões de acesso e a proteção dos dados armazenados. Caso algum problema seja encontrado, ele deverá ser corrigido antes da implementação do sistema.
+- **Testes de autenticação:** verificar se somente usuários com credenciais válidas conseguem acessar o sistema;
+- **Testes de autorização:** verificar se cada perfil consegue acessar somente as funcionalidades permitidas;
+- **Teste de acesso administrativo:** tentar acessar funções administrativas utilizando uma conta sem essas permissões;
+- **Testes contra SQL Injection:** utilizar entradas de teste para verificar se o sistema impede comandos SQL não autorizados;
+- **Testes de validação de entrada:** verificar se dados inválidos ou inesperados são rejeitados corretamente;
+- **Testes de gerenciamento de sessão:** verificar o comportamento após logout, expiração da sessão e tentativas de reutilização de uma sessão encerrada;
+- **Análise de dependências:** verificar se as bibliotecas utilizadas possuem vulnerabilidades conhecidas;
+- **Análise estática do código:** utilizar ferramentas para identificar possíveis problemas de segurança no código;
+- **Testes de configuração:** verificar configurações relacionadas a acesso, banco de dados, ambiente e serviços utilizados pela aplicação;
+- **Testes de disponibilidade:** verificar o comportamento do sistema diante de uma quantidade elevada de requisições em ambiente controlado;
+- **Verificação dos logs:** confirmar se operações importantes, tentativas de acesso e alterações são registradas corretamente.
 
+Os resultados dos testes serão utilizados para identificar problemas que deverão ser corrigidos antes da disponibilização do sistema. Dessa forma, a etapa de testes funciona como uma verificação das medidas de segurança definidas anteriormente, sem repetir a análise de ameaças e riscos realizada nas etapas anteriores.
 
 ### Implementação ou Descrição Detalhada
 As medidas de segurança serão aplicadas de acordo com os riscos identificados do sistema.
