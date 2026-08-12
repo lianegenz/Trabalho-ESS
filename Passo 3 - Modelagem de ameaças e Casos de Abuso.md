@@ -1,41 +1,41 @@
 ## 5. Modelagem de ameaças com STRIDE
 | ID | Categoria STRIDE | Componente ou ativo | Ameaça | Impacto previsto |
 | --- | --- | --- | --- | --- |
-| T01 | Spoofing | Cadastro de pacientes, agendamento de consultas, dados pessoais dos pacientes, histórico de atendimentos | Um atacante obtém credenciais e acessa o cadastro do quiropraxista ou administrador com o intuíto de obter informações de pacientes | Violação de privacidade e obtenção indevida de informações confidenciais |
-| T02 | Tempering | Banco de dados | Um atacante altera dados de pacientes, financeiros, agendamentos, usuários e demais informações cruciais para o sistema | Desorganização de agendamentos, perda de registros financeiros, erros nas informações de pacientes |
-| T03 | Repudiation | Pagamentos, registros e logs | Um paciente nega ter recebido o comprovante do pagamento de uma consulta e o sistema não possui registros salvos/confiáveis | Impossibilidade de responsabilização e dificuldade para resolver contestações por falta de provas |
-| T04 | Information Disclosure | Dados pessoais dos pacientes | Um atacante acessa a conta de um paciente e obtem o histórico de consultas, prontuários e outras informações sensíveis |  Violação de privacidade e exposição de informações de saúde |
-| T05 | Denial of Service | Portal web, autenticação e/ou API | Um atacante envia uma grande quantia de solicitações de cadastros ao site | Indisponibilidade do sistema e prejuízo aos pacientes reais |
-| T06 | Elevation of Privilege | Controle de permissões| Um paciente mal-intencionado percebe uma falha de autorização e obtém permissão de secretária ou quiropraxista | Alterações nos cadastros de pacientes, agendar consultas não permitidas e/ou falsas, alterar outras permissões de usuários, controle financeiro e registro de procedimentos não autorizados | 
+| T01 | Spoofing | Autenticação e contas de usuários | Um atacante obtém credenciais e acessa o cadastro do quiropraxista majoritário, quiropraxista ou secretária | Acesso não autorizado ao sistema utilizando a identidade de um usuário legítimo, podendo resultar na realização de operações indevidas |
+| T02 | Tampering | Banco de dados | Um atacante altera dados de pacientes, financeiros, agendamentos, usuários e demais informações cruciais para o sistema | Desorganização de agendamentos, perda de registros financeiros, erros nas informações de pacientes |
+| T03 | Repudiation | Pagamentos, registros e logs | Um usuário contesta a realização de um pagamento ou determinada operação, e o sistema não possui registros confiáveis que permitam comprovar quando, por quem e como a operação foi realizada | Impossibilidade de responsabilização e dificuldade para resolver contestações por falta de provas |
+| T04 | Information Disclosure | Dados pessoais dos pacientes | Um usuário mal-intencionado obtém acesso indevido aos prontuários e demais informações sensíveis dos pacientes |  Violação de privacidade e exposição de informações pessoais e de saúde do paciente |
+| T05 | Denial of Service | Portal web e autenticação| Um atacante envia uma grande quantidade de solicitações simultâneas ao sistema | Indisponibilidade do sistema e prejuízo aos pacientes e quiropraxistas reais |
+| T06 | Elevation of Privilege | Controle de permissões| Um usuário mal-intencionado explora uma falha de autorização e obtém permissões superiores às previstas para seu perfil | Alterações nos cadastros de pacientes, agendar consultas não permitidas e/ou falsas, alterar outras permissões de usuários, controle financeiro e registro de procedimentos não autorizados | 
 
 ### 5.1 Interpretação da análise
 
-As ameaças demonstram que diversas partes do sistema devem ser protegidas, em específico os usuários admnistrativos e o banco de dados; O agendamento de consultas e registros de pagamentos dependem da integridade dos dados; Os logs e outros registros permitem responsabilizar os autores das operações; Histórico medico, informações de cadastro, consultas e de pagamentos devem ser protegidos de forma confidencial; O portal precisa estar disponível e orientar sobre como entrar em contato com a clínica e realizar o cadastro, além de informar o horário de funcionamento; Dados confidenciais e funções administrativas devem ser acessíveis apenas para usuários autorizados.
+As ameaças demonstram que diversas partes do sistema devem ser protegidas, em específico os usuários administrativos e o banco de dados; O agendamento de consultas e registros de pagamentos dependem da integridade dos dados; Os logs e outros registros permitem responsabilizar os autores das operações; Histórico medico, informações de cadastro, consultas e de pagamentos devem ser protegidos de forma confidencial; O portal precisa estar disponível e orientar sobre como entrar em contato com a clínica e realizar o cadastro, além de informar o horário de funcionamento; Dados confidenciais e funções administrativas devem ser acessíveis apenas para usuários autorizados.
 
 ## 6. Casos de abuso
 
-### CA01 — Obtenção de informações confidenciais através do cadastro de quiropraxista ou administrador
+### CA01 — Acesso ao sistema utilizando a identidade de usuário legítimo
 
 **Ator:** Atacante externo.
 
-**Objetivo:** Obter informações pessoais de um paciente.
+**Objetivo:** Utilizar a identidade de um usuário legítimo para acessar o sistema.
 
 **Condições necessárias:**
 
-- o atacante obtém as credenciais de um funcionário autorizado a realizar consultas;
-- o sistema não exige uma verificação adicional para operações importantes;
-- o sistema armazena registros anteriores e o histórico de consultas;
-- a conta da vítima pode ser acessada somente com o usuário e a senha obtidos.
-
+- O atacante obtém as credenciais de um Quiropraxista ou da Secretária;
+- O sistema permite o acesso utilizando apenas as credenciais obtidas;
+- O atacante consegue utilizar a conta da vítima.
+  
 **Fluxo de abuso:**
 
 1. O atacante obtém o usuário e a senha do funcionário;
 2. O atacante acessa o sistema utilizando a identidade da vítima;
-3. O atacante obtem as informações de consultas e pacientes.
+3. O sistema autentica o atacante como se ele fosse legítimo.
+4. O atacante tem acesso às funcionalidades disponíveis para aquele perfil.
 
-**Impacto esperado:** Violação de privacidade e obtenção indevida de informações confidenciais, necessidade de contestação e prejuízo ao paciente.
+**Impacto esperado:** Acesso não autorizado ao sistema e possibilidade de realização de operações utilizando a identidade de outro usuário.
 
-**Categorias STRIDE relacionadas:** Spoofing e Information Disclosure.
+**Categorias STRIDE relacionadas:** Spoofing.
 
 
 ---
@@ -48,10 +48,10 @@ As ameaças demonstram que diversas partes do sistema devem ser protegidas, em e
 
 **Condições necessárias:**
 
-- O atacante encontra brechas na segurança e acessa o banco de dados;
-- O sistema não possui medidas de checagem de autorização;
-- O sistema não possui criptografia de rede;
-- O atacante consegue realizar uma injeção de SQL efetiva.
+- O sistema possui uma vulnerabilidade na validação ou parametrização das entradas;
+- O atacante consegue enviar entradas maliciosas ao sistema;
+- O atacante consegue explorar a vulnerabilidade para executar comandos SQL não autorizados;
+- O sistema não possui mecanismos adequados para impedir ou detectar alterações indevidas no banco de dados;
 
 **Fluxo de abuso:**
 
@@ -90,33 +90,33 @@ As ameaças demonstram que diversas partes do sistema devem ser protegidas, em e
 
 ---
 
-## CA04 — Acesso não autorizado ao cadastro do usuário
+## CA04 — Acesso não autorizado às informações do paciente
 
-**Ator:** Atacante externo.
+**Ator:** Usuário mal-intencionado.
 
-**Objetivo:** Acessar cadastro de usuário para obter informações confidenciais.
+**Objetivo:** Obter informações pessoais e dados de saúde dos pacientes sem autorização.
 
 **Condições necessárias:**
 
-- O atacante obtém o usuário e a senha do paciente;
-- O sistema não exige uma verificação adicional;
-- O sistema armazena registros anteriores e o histórico de consultas;
-- A conta da vítima pode ser acessada somente com o usuário e a senha obtidos.
+- O usuário consegue acessar o sistema;
+- O sistema apresenta uma falha no controle de permissões;
+- O usuário consegue visualizar prontuários ou informações de pacientes que não deveriam estar disponíveis para seu perfil;
 
 **Fluxo de abuso:**
 
-1. O atacante obtem as credenciais de cadastro da vítima;
-2. O atacante acessa o sistema utilizando a identidade da vítima;
-3. O atacante obtem as informações de saúde, consultas e histórico médico da vitima.
+1. O usuário acessa o sistema utilizando uma conta válida;
+2. O usuário acessa a área de pacientes ou prontuários;
+3. O usuário consulta informações que não estão relacionadas às suas permissões;
+4. O usuário obtém dados pessoais, histórico de atendimentos e informações de saúde dos pacientes;
 
-**Impacto esperado:** Violação de privacidade, roubo e exposição de informações de saúde e dados pessoais.
+**Impacto esperado:** Violação de privacidade, roubo e exposição de informações de saúde e dados pessoais dos pacientes.
 
-**Categorias STRIDE relacionadas:** Spoofing e Information Disclosure.
+**Categorias STRIDE relacionadas:** Information Disclosure.
 
 
 ## 7. Considerações finais
 
-As ameaças que foram consideradas mais preocupantes são o acesso indevido ás contas cadastradas, a alteração de informações sem autorização, a obtenção de permissões administrativas e a indisponibilidade do sistema durante o período de funcionamento.
+As ameaças que foram consideradas mais preocupantes são o acesso indevido às contas cadastradas, a alteração de informações sem autorização, a obtenção de permissões administrativas e a indisponibilidade do sistema durante o período de funcionamento.
 
 Os ativos mais importantes são as credenciais, os dados pessoais e prontuários de usuários, as solicitações de agendamento de consultas, a disponibilidade do sistema, as permissões de acesso e os registros das operações do sistema.
 
