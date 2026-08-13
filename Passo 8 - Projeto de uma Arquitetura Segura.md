@@ -1,5 +1,4 @@
 ### Requisitos de Segurança
-
 Os requisitos de segurança foram definidos com base nas ameaças identificadas na modelagem STRIDE e nos riscos avaliados anteriormente. O objetivo é estabelecer medidas que protejam os dados dos pacientes, os prontuários, as informações financeiras e as contas dos usuários.
 
 **RS01 — Autenticação dos usuários**
