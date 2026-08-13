@@ -35,9 +35,9 @@ O **gerenciamento de prontuários** corresponde à consulta e atualização das 
 
 O **gerenciamento financeiro** envolve o registro de pagamentos e a consulta das movimentações financeiras relacionadas aos atendimentos.
 
-O **Quiropraxista Majoritário** possui ainda funções administrativas adicionais, como o gerenciamento dos usuários cadastrados e de suas permissões de acesso.
+O **Quiropraxista Majoritário** possui todas as funcionalidades atribuídas ao Quiropraxista, além de funções administrativas adicionais, como o gerenciamento dos usuários cadastrados, das permissões de acesso e do controle financeiro.
 
-Dessa forma, cada perfil interage apenas com as funcionalidades necessárias ao desempenho de suas atividades dentro da clínica.
+Dessa forma, cada perfil utiliza as funcionalidades necessárias às suas atividades, sendo que o Quiropraxista Majoritário acumula as funções profissionais do Quiropraxista e as atribuições administrativas do sistema.
 
 ![Diagrama de Casos de Uso](diagramas/diagrama-caso-de-uso.png)
 
@@ -47,14 +47,13 @@ O diagrama de contexto apresenta uma visão geral da comunicação entre os usu�
 
 Os três perfis de usuários interagem diretamente com o sistema de acordo com suas responsabilidades.
 
-O **Quiropraxista Majoritário** envia ao sistema informações relacionadas à administração, aos atendimentos e ao controle financeiro, recebendo informações da agenda, dos pacientes e dos relatórios disponíveis.
+O **Quiropraxista Majoritário**, assim como o Quiropraxista, utiliza o sistema para acompanhar e realizar atendimentos, consultar pacientes, acessar a agenda e registrar avaliações e procedimentos nos prontuários. Além disso, possui acesso às funcionalidades administrativas, como gerenciamento de usuários, permissões e informações financeiras.
 
-O **Quiropraxista** interage principalmente com as informações referentes aos atendimentos e aos prontuários. Por meio do sistema, poderá consultar sua agenda, acessar dados necessários dos pacientes e registrar avaliações e procedimentos realizados.
+O **Quiropraxista** interage principalmente com as informações referentes aos atendimentos e aos prontuários. Por meio do sistema, poderá consultar sua agenda, acessar os dados necessários dos pacientes e registrar avaliações e procedimentos realizados.
 
 A **Secretária** interage com o sistema principalmente para realizar atividades administrativas, como cadastro de pacientes, organização da agenda, agendamentos, reagendamentos, cancelamentos e registros de pagamentos.
 
 O sistema funciona, portanto, como o ponto central de interação entre os diferentes usuários, controlando o acesso às informações conforme as permissões atribuídas a cada perfil.
-
 ![Diagrama de Contexto](diagramas/diagrama-contexto.png)
 
 
@@ -71,11 +70,11 @@ De forma geral, o fluxo pode ser representado pelas seguintes etapas:
 4. Os dados cadastrais do paciente são armazenados no banco de dados.
 5. Um atendimento pode ser agendado em um dos horários disponíveis.
 6. O sistema registra o agendamento e atualiza a agenda.
-7. O Quiropraxista consulta sua agenda e as informações necessárias para realizar o atendimento.
-8. Após ou durante o atendimento, o Quiropraxista pode acessar o prontuário do paciente.
+7. O Quiropraxista ou Quiropraxista Majoritário consulta sua agenda e as informações necessárias para realizar o atendimento.
+8. Durante ou após o atendimento, o Quiropraxista ou Quiropraxista Majoritário pode acessar o prontuário do paciente.
 9. São registradas no prontuário informações referentes à avaliação realizada e aos procedimentos utilizados.
 10. As informações do prontuário são armazenadas e permanecem vinculadas ao respectivo paciente.
-11. As informações relacionadas ao pagamento do atendimento podem ser registradas no módulo financeiro.
+11. As informações relacionadas ao pagamento do atendimento podem ser registradas no módulo financeiro por usuários autorizados.
 12. O sistema armazena ou atualiza os registros financeiros correspondentes.
 13. As informações ficam disponíveis para consultas posteriores, respeitando as permissões de acesso de cada perfil.
 
