@@ -1,4 +1,24 @@
-### Conceitos de Monitoramento: Breve explicação sobre a diferença entre prevenir e detectar, e quais eventos registrar (logs)
+### Conceitos de Monitoramento
+### O que é detecção de intrusões?
+A detecção de intrusões trata-se do procedimento de identificação de atividades consideradas suspeitas ou maliciosas em um sistema. Que possui o objetivo de perceber quando alguém está tentando acessar, alterar ou usar recursos de uma forma do qual não deveria ser possível.
+
+### Diferença entre prevenir e detectar
+O ato de prevenir tem o significado de criar mecanismos para tentar impedir que ataques possam acontecer tendo como exemplos a autenticação, o controle de acesso e senha entre outros exemplos.
+Enquanto, detectar significa identificar se uma atividade suspeita está acontecendo ou se já aconteceu. Ou seja, a prevenção tenta bloquear as ameaças e em contrapartida a detecção tenta perceber e alertar sobre ameaças.
+
+### Eventos do sistema que devem ser registrados
+Após uma análise profunda realizada pela nossa equipe decidimos que para conseguir detectar possíveis intrusões, o sistema deve registrar eventos importantes como:
+-Tentativas de login, tanto bem-sucedidas quanto falhas;
+-Acessos e alterações de dados de todos os tipos;
+-Criação, alteração ou exclusão de usuários;
+-Mudanças de permissões e níveis de acesso;
+-Alterações em configuração do sistema;
+-Erros e atividades consideradas suspeitas;
+E vale ressaltar que esses registros são chamados de logs que permitem identificar comportamento tanto anormais quanto normais e investigar possíveis incidentes de segurança.
+
+
+
+
 
 ###  Regras de Detecção
 As regras de detecção foram definidas considerando os principais riscos identificados no sistema. Para cada situação, foram estabelecidos o risco observado, a fonte de dados utilizada no monitoramento, a condição que deverá gerar um alerta e a resposta inicial ao possível incidente.
