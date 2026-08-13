@@ -15,7 +15,7 @@ Após uma análise profunda realizada pela nossa equipe decidimos que para conse
 - Alterações em configuração do sistema;
 - Erros e atividades consideradas suspeitas;
   
-E vale ressaltar que esses registros são chamados de logs que permitem identificar comportamento tanto anormais quanto normais e investigar possíveis incidentes de segurança.
+E vale ressaltar que esses registros são chamados de logs que permitem identificar comportamentos tanto anormais quanto normais e investigar possíveis incidentes de segurança.
 
 
 
