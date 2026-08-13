@@ -70,13 +70,13 @@ As decisões de arquitetura do sistema foram definidas considerando a necessidad
 
 ### Controle de acesso por perfil
 
-O sistema utilizará controle de acesso baseado nos perfis Quiropraxista Majoritário, Quiropraxista e Secretária.
+O sistema utilizará controle de acesso baseado nos perfis **Quiropraxista Majoritário, Quiropraxista e Secretária**.
 
-O Quiropraxista Majoritário terá acesso administrativo mais amplo, incluindo gerenciamento de usuários, permissões, prontuários e informações financeiras.
+O **Quiropraxista Majoritário** terá acesso a todas as funcionalidades atribuídas ao Quiropraxista, além de permissões administrativas adicionais, como gerenciamento de usuários, permissões de acesso e informações financeiras.
 
-O Quiropraxista terá acesso às funcionalidades relacionadas aos atendimentos, pacientes, agenda e prontuários.
+O **Quiropraxista** terá acesso às funcionalidades relacionadas aos atendimentos, pacientes, agenda e prontuários.
 
-A Secretária terá acesso às atividades administrativas, como cadastro de pacientes, organização da agenda e registros financeiros permitidos ao seu perfil.
+A **Secretária** terá acesso às atividades de apoio administrativo, como cadastro de pacientes, organização da agenda e registros financeiros permitidos ao seu perfil.
 
 Essa separação reduz o risco de acesso indevido a informações que não são necessárias para cada função.
 
