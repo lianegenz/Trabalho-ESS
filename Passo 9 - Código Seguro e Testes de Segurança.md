@@ -1,4 +1,4 @@
-### Seleção de Práticas de Código Seguro
+### 14. Seleção de Práticas de Código Seguro
 Para esta etapa, foram selecionadas duas práticas de código seguro diretamente relacionadas aos riscos identificados na análise de ameaças: **controle de autenticação e autorização por perfil e validação de entradas com utilização de consultas parametrizadas**.
 
 **Prática 1:** Controle de autenticação e autorização por perfil
@@ -53,7 +53,7 @@ SENÃO
 FIM_ALGORITMO
 ```
 
-### Testes de Segurança (Antes da Implementação)
+### 14.1. Testes de Segurança (Antes da Implementação)
 
 **Teste 1 — Controle de acesso por perfil**
 
@@ -105,10 +105,10 @@ Resultado esperado:
 - Entrada de teste de SQL Injection → não deve executar comandos SQL indevidos.
 - O banco de dados não deve sofrer alterações não autorizadas.
 
-### Implementação ou Descrição Detalhada
+### 15. Implementação ou Descrição Detalhada
 As medidas de segurança serão aplicadas de acordo com os riscos identificados nas etapas anteriores. Nesta etapa, são detalhadas principalmente as duas práticas de código seguro selecionadas: controle de autenticação e autorização por perfil e validação de entradas com utilização de consultas parametrizadas.
 
-**Controle de autenticação e autorização por perfil**
+**15.1 Controle de autenticação e autorização por perfil**
 
 O acesso ao sistema será controlado por contas individuais de usuário. Cada usuário deverá realizar a autenticação antes de acessar as funcionalidades internas da aplicação.
 
@@ -118,7 +118,7 @@ O Quiropraxista Majoritário terá acesso às funcionalidades administrativas, a
 
 Dessa forma, um usuário não poderá executar operações que não estejam relacionadas às suas permissões. Tentativas de acesso não autorizado deverão ser registradas para possibilitar posterior investigação.
 
-**Validação de entradas e proteção contra SQL Injection**
+**15.2 Validação de entradas e proteção contra SQL Injection**
 
 As informações fornecidas pelos usuários deverão ser validadas antes de serem processadas ou armazenadas. Serão verificadas características como preenchimento obrigatório, tamanho, formato e conteúdo dos dados.
 
@@ -128,7 +128,7 @@ Por exemplo, ao realizar uma consulta de paciente, o nome informado pelo usuári
 
 Além disso, as operações de cadastro, alteração e consulta deverão ser realizadas por meio da aplicação, sem permitir que usuários acessem diretamente o banco de dados.
 
-**Proteção dos dados e registros**
+**15.3 Proteção dos dados e registros**
 
 Os dados dos pacientes e seus prontuários deverão ser protegidos, permitindo o acesso somente aos usuários autorizados. As informações financeiras também deverão possuir controle de acesso e registros das operações realizadas.
 
