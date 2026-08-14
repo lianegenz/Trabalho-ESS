@@ -1,10 +1,10 @@
-## Pipeline DevSecOps Proposto: Descrição textual (Planejamento, Código, Verificação, Operação)
+### 24. Pipeline DevSecOps Proposto: Descrição textual (Planejamento, Código, Verificação, Operação)
 
 O pipeline DevSecOps do sistema de gerenciamento da clínica de Quiropraxia tem como objetivo integrar práticas de desenvolvimento, testes e segurança ao longo de todo o ciclo de vida da aplicação. A abordagem busca garantir que os requisitos de segurança sejam considerados desde o planejamento até a operação do sistema, reduzindo a possibilidade de vulnerabilidades chegarem ao ambiente de produção.
 
 O ciclo foi organizado em quatro etapas principais: Planejamento, Código, Verificação e Operação. Essas etapas são executadas de forma contínua, permitindo que alterações realizadas no sistema sejam analisadas, testadas e disponibilizadas de maneira controlada.
 
-### 1. Planejamento
+### 24.1 Planejamento
 
 A etapa de planejamento inicia o ciclo de desenvolvimento e tem como objetivo definir o que será desenvolvido e quais requisitos de segurança deverão ser considerados. Para o sistema da clínica, são analisadas as funcionalidades relacionadas aos três perfis de usuários: Quiropraxista Majoritário, Quiropraxista e Secretária, considerando as diferentes permissões de acesso de cada perfil.
 
@@ -16,7 +16,7 @@ Também podem ser identificadas ameaças utilizando técnicas como STRIDE, permi
 
 Ao final dessa etapa, as funcionalidades são transformadas em tarefas de desenvolvimento, acompanhadas dos respectivos requisitos de segurança e critérios de aceitação.
 
-### 2. Código
+### 24.2 Código
 
 Na etapa de código ocorre a implementação das funcionalidades planejadas. Os desenvolvedores realizam alterações no repositório do projeto, normalmente por meio de branches e pull requests, evitando que alterações sejam inseridas diretamente na versão principal do sistema.
 
@@ -28,7 +28,7 @@ O controle de acesso também deve ser implementado nessa etapa. O sistema deve v
 
 Cada alteração realizada no código pode iniciar automaticamente o pipeline de integração contínua por meio do GitHub Actions, permitindo que as verificações sejam executadas antes que a alteração seja incorporada à aplicação.
 
-### **3. Verificação**
+### 24.3 Verificação
 
 A etapa de verificação é responsável por avaliar se o código desenvolvido atende aos requisitos funcionais e de segurança definidos anteriormente.
 
@@ -46,7 +46,7 @@ O fluxo de verificação pode ser representado da seguinte forma:
 
 Se alguma verificação crítica falhar, o pipeline deve impedir o avanço da alteração para as etapas seguintes. O desenvolvedor deverá corrigir o problema e realizar uma nova alteração para que as verificações sejam executadas novamente.
 
-### 4. Operação
+### 24.4 Operação
 
 Após a aprovação das alterações e a conclusão das verificações, a aplicação pode ser disponibilizada em um ambiente de homologação ou produção. A etapa de operação representa o funcionamento efetivo do sistema e o acompanhamento contínuo de sua segurança e disponibilidade.
 
@@ -58,7 +58,7 @@ Também devem ser realizados procedimentos de manutenção, como atualização d
 
 Dessa forma, a operação não representa o final do processo. Ela alimenta novamente a etapa de planejamento, criando um ciclo contínuo de melhoria da segurança.
 
-### Ciclo completo
+### 24.5 Ciclo completo
 
 Considerando as quatro etapas, o ciclo DevSecOps do sistema pode ser representado da seguinte maneira:
 
@@ -69,7 +69,7 @@ Assim, o pipeline DevSecOps permite que a segurança seja tratada como uma ativi
 O ciclo também permite estabelecer uma relação entre análise de riscos, desenvolvimento, automação de testes, segurança e operação. Dessa forma, uma vulnerabilidade identificada durante a operação pode gerar uma nova atividade de planejamento, ser corrigida no código, passar novamente pelas verificações automatizadas e somente então ser disponibilizada no ambiente de produção. Isso cria um processo contínuo de detecção, correção e prevenção de vulnerabilidades ao longo de todo o ciclo de vida do sistema.
 
 
-## Condições de Parada (Break the Build):
+## 25. Condições de Parada (Break the Build):
 
 Durante o pipeline DevSecOps, algumas falhas de segurança deverão impedir o avanço da aplicação para as próximas etapas ou o seu deploy. Essas condições têm como objetivo evitar que vulnerabilidades conhecidas ou informações sensíveis cheguem ao ambiente de produção.
 
@@ -99,7 +99,7 @@ Caso os testes necessários para validar o funcionamento da aplicação apresent
 
 Caso o projeto não consiga ser compilado ou construído corretamente, o pipeline deverá ser interrompido, pois não será possível garantir que a versão gerada esteja funcionando corretamente.
 
-### Resumo das Condições
+### 25.1 Resumo das Condições
 
 | Condição | Ação do Pipeline |
 | --- | --- |
@@ -110,4 +110,4 @@ Caso o projeto não consiga ser compilado ou construído corretamente, o pipelin
 | Falha nos testes automatizados| Bloquear Deploy |
 | Falha na compilação ou construção da aplicação | Bloquear Deploy |
 
-## Roteiro do Vídeo Final: Estruturar a fala e os pontos de demonstração da evolução do projeto (5 a 8 minutos)
+## 26. Roteiro do Vídeo Final: Estruturar a fala e os pontos de demonstração da evolução do projeto (5 a 8 minutos)
