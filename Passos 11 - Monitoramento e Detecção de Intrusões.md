@@ -1,12 +1,12 @@
-### Conceitos de Monitoramento
-### O que é detecção de intrusões?
+### 19. Conceitos de Monitoramento
+### 20. O que é detecção de intrusões?
 A detecção de intrusões trata-se do procedimento de identificação de atividades consideradas suspeitas ou maliciosas em um sistema. Que possui o objetivo de perceber quando alguém está tentando acessar, alterar ou usar recursos de uma forma do qual não deveria ser possível.
 
-### Diferença entre prevenir e detectar
+### 21. Diferença entre prevenir e detectar
 O ato de prevenir tem o significado de criar mecanismos para tentar impedir que ataques possam acontecer tendo como exemplos a autenticação, o controle de acesso e senha entre outros exemplos.
 Enquanto, detectar significa identificar se uma atividade suspeita está acontecendo ou se já aconteceu. Ou seja, a prevenção tenta bloquear as ameaças e em contrapartida a detecção tenta perceber e alertar sobre ameaças.
 
-### Eventos do sistema que devem ser registrados
+### 22. Eventos do sistema que devem ser registrados
 Após uma análise profunda realizada pela nossa equipe decidimos que para conseguir detectar possíveis intrusões, o sistema deve registrar eventos importantes como:
 - Tentativas de login, tanto bem-sucedidas quanto falhas;
 - Acessos e alterações de dados de todos os tipos;
@@ -17,14 +17,10 @@ Após uma análise profunda realizada pela nossa equipe decidimos que para conse
   
 E vale ressaltar que esses registros são chamados de logs que permitem identificar comportamentos tanto anormais quanto normais e investigar possíveis incidentes de segurança.
 
-
-
-
-
-###  Regras de Detecção
+### 23. Regras de Detecção
 As regras de detecção foram definidas considerando os principais riscos identificados no sistema. Para cada situação, foram estabelecidos o risco observado, a fonte de dados utilizada no monitoramento, a condição que deverá gerar um alerta e a resposta inicial ao possível incidente.
 
-### Regra 1 – Tentativas repetidas de login
+### 23.1 Regra 1 – Tentativas repetidas de login
 
 **Risco observado:** tentativa de acesso não autorizado por meio de repetidas tentativas de autenticação.
 
@@ -34,7 +30,7 @@ As regras de detecção foram definidas considerando os principais riscos identi
 
 **Resposta inicial:** bloquear temporariamente novas tentativas de acesso, registrar o evento e gerar um alerta para o responsável pelo sistema.
 
-### Regra 2 – Acesso indevido a prontuários
+### 23.2 Regra 2 – Acesso indevido a prontuários
 
 **Risco observado:** tentativa de consulta ou alteração de prontuários por usuário sem autorização.
 
@@ -46,7 +42,7 @@ As regras de detecção foram definidas considerando os principais riscos identi
 
 O **Quiropraxista** e o **Quiropraxista Majoritário** poderão acessar os prontuários de acordo com suas permissões, sendo que o Majoritário também possui as funcionalidades adicionais relacionadas à administração do sistema.
 
-### Regra 3 – Alterações suspeitas em registros financeiros
+### 23.3 Regra 3 – Alterações suspeitas em registros financeiros
 
 **Risco observado:** alteração, exclusão ou registro indevido de pagamentos e outras informações financeiras.
 
