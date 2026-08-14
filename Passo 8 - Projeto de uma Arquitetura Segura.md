@@ -240,3 +240,4 @@ Com essas decisões, busca-se reduzir riscos relacionados ao acesso indevido, al
 
 
 ### 13. Diagrama
+<img width="1302" height="462" alt="image" src="https://github.com/user-attachments/assets/c415ea30-76ef-44ff-940c-c2f0f9764752" />
