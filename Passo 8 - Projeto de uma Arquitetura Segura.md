@@ -239,5 +239,9 @@ A arquitetura seguirá o princípio do menor privilégio, garantindo que cada us
 Com essas decisões, busca-se reduzir riscos relacionados ao acesso indevido, alteração de informações, exposição de dados e uso inadequado de permissões.
 
 
-### 13. Diagrama
+### 13. Diagrama de Software de Arquitetura Segura
+
+O diagrama apresenta os principais componentes do sistema e o fluxo entre eles. Os usuários acessam o Portal Web, passando pelo serviço de autenticação e pelo controle de permissões antes de utilizar a Aplicação/API. A aplicação reúne os módulos de pacientes, agenda, prontuário, avaliação de dor e financeiro, realizando as operações no banco de dados. Os controles de autenticação, permissões, validação/parametrização e registros/logs estão associados aos componentes correspondentes para representar as medidas de segurança consideradas na análise STRIDE.
+
+Confira o diagrama visual abaixo:
 <img width="1302" height="462" alt="image" src="https://github.com/user-attachments/assets/c415ea30-76ef-44ff-940c-c2f0f9764752" />
