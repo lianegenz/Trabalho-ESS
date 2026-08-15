@@ -18,7 +18,7 @@ Durante a verificação realizada pelo OWASP ZAP no OWASP Juice Shop, foram iden
 
 Para facilitar a interpretação dos resultados obtidos durante a verificação, a tabela a seguir apresenta os principais alertas identificados pelo OWASP ZAP, seus possíveis impactos e a relação com vulnerabilidades e boas práticas de segurança.
 
-
+![Evidencias](Evidencias/Evidência.png)
 
 
 **A01 - Configuração Incorreta entre Domínios (CORS)**
