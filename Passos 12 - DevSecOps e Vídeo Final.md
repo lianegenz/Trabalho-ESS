@@ -110,4 +110,151 @@ Caso o projeto não consiga ser compilado ou construído corretamente, o pipelin
 | Falha nos testes automatizados| Bloquear Deploy |
 | Falha na compilação ou construção da aplicação | Bloquear Deploy |
 
-## 26. Roteiro do Vídeo Final: Estruturar a fala e os pontos de demonstração da evolução do projeto (5 a 8 minutos)
+## 26. Roteiro do Vídeo Final
+
+**Liane 40 segundos - abertura**
+
+“Imagine que uma secretária esteja atendendo vários pacientes durante o dia. Ela precisa controlar agendamentos, pagamentos e informações dos pacientes. Ao mesmo tempo, o quiropraxista precisa acessar prontuários e registrar os atendimentos.
+
+Agora imagine que, nesse sistema, alguém consiga entrar utilizando a conta de um funcionário, alterar um prontuário ou acessar informações de pacientes que não deveria.
+
+É justamente pensando nesses problemas que surgiu a nossa análise de segurança do Quiagenda.
+E vale resssaltar que scolhemos esse sistema porque uma das integrantes possui contato com a área de Quiropraxia, permitindo trabalhar com necessidades próximas de uma situação real.
+
+E neste trabalho da disciplina de Engenharia de Software Seguro analisamos as principais ameaças, riscos e possíveis casos de abuso de um sistema de gestão para profissionais de Quiropraxia.
+
+Nosso objetivo foi entender: o que pode dar errado, qual seria o impacto e o que podemos fazer para evitar que isso aconteça?”
+
+
+
+**3. Usuários e ativos - 35 segundos vitória**
+
+“Identificamos três principais perfis de usuários.
+
+O administrador ou quiropraxista majoritário, responsável pelas funções administrativas e pelo gerenciamento de pacientes, prontuários, agenda e financeiro.
+
+O quiropraxista, que consulta a agenda e registra procedimentos nos prontuários.
+
+E a secretária, responsável principalmente por pacientes, agendamentos, pagamentos e controle do caixa.
+
+Entre os principais ativos estão as credenciais, dados pessoais, prontuários, históricos de atendimento, registros financeiros, permissões, logs e a disponibilidade do sistema.”
+
+
+**4. Principais ameaças - 55 segundos Iasmin**
+
+“Para identificar as ameaças, utilizamos o modelo STRIDE.
+
+Em Spoofing, identificamos o risco de um atacante obter as credenciais de um usuário e acessar o sistema utilizando sua identidade.
+
+Em Tampering, existe o risco de alterações não autorizadas nas informações do banco de dados.
+
+Em Repudiation, um usuário pode contestar uma operação, como um pagamento, caso não existam registros confiáveis para comprovar o que aconteceu.
+
+Em Information Disclosure, temos o risco de exposição de dados pessoais e prontuários dos pacientes.
+
+Em Denial of Service, um atacante pode enviar uma grande quantidade de requisições e deixar o sistema indisponível.
+
+E em Elevation of Privilege, um usuário pode explorar uma falha de autorização para conseguir permissões superiores às que deveria possuir.”
+
+
+**5. Casos de abuso - 45 segundos Adrian**
+
+“Depois da análise STRIDE, criamos casos de abuso para representar situações mais concretas.
+
+No primeiro, um atacante obtém as credenciais de um funcionário e acessa o sistema utilizando sua identidade.
+
+No segundo, temos um ataque de SQL Injection, em que uma entrada maliciosa pode permitir acesso ou alteração não autorizada no banco de dados.
+
+Também identificamos a possibilidade de um usuário negar um pagamento quando o sistema não possui registros confiáveis para comprovar a operação.
+
+E, por último, temos o acesso não autorizado aos dados dos pacientes, permitindo visualizar prontuários e informações que não deveriam estar disponíveis para aquele usuário.”
+
+**6. Riscos prioritários - 55 segundos Adrian**
+
+“Depois de identificar as ameaças, fizemos a análise dos riscos considerando probabilidade e impacto.
+
+O risco de maior pontuação foi o R05, indisponibilidade do sistema, com 16 pontos, classificado como crítico.
+
+Em seguida temos o R01, acesso utilizando a identidade de um usuário legítimo, com 12 pontos, também crítico.
+
+Entre os riscos altos estão a exposição não autorizada dos dados dos pacientes, com 9 pontos, e as alterações não autorizadas no banco de dados e a elevação indevida de privilégios, ambas com 8 pontos.
+
+Já a negação de uma operação de pagamento teve 6 pontos e foi classificada como média.
+
+Essa priorização mostrou quais problemas deveriam receber maior atenção no desenvolvimento do sistema.”
+
+**7. Decisões de arquitetura - 50 segundos Vitória**
+
+“Com base nesses riscos, identificamos algumas necessidades importantes para a arquitetura.
+
+Como o sistema possui diferentes perfis, o acesso deve ser controlado de acordo com as responsabilidades de cada usuário.
+
+Também é necessário proteger o banco de dados e as informações dos pacientes, controlar o acesso aos prontuários e manter registros confiáveis das operações realizadas.
+
+Além disso, a disponibilidade precisa ser considerada, já que a indisponibilidade foi o risco de maior prioridade.
+
+Assim, as decisões de segurança são diretamente relacionadas às ameaças encontradas na análise.”
+
+**8. Práticas de código seguro - 50 segundos Liane**
+
+“Com base nos riscos encontrados, selecionamos duas práticas de código seguro que foram feitas em pseudocódigo.
+
+A primeira é o controle de autenticação e autorização por perfil.
+
+O sistema deve verificar primeiro se o usuário está autenticado e, depois, se ele possui permissão para realizar determinada operação. Essa verificação deve acontecer no servidor, impedindo, por exemplo, que um Quiropraxista tente acessar uma função administrativa apenas modificando uma URL ou requisição.
+
+Tentativas de acesso não autorizado também devem ser registradas nos logs.
+
+A segunda prática é a validação de entradas com consultas parametrizadas.
+
+Os dados fornecidos pelo usuário devem ser validados, verificando campos obrigatórios, tamanho e formato. Além disso, consultas parametrizadas devem ser utilizadas para reduzir o risco de SQL Injection.”
+
+**Iasmin**
+"Também utilizamos o OWASP ZAP no OWASP Juice Shop, em ambiente local e controlado.
+Foram selecionados três achados: configuração incorreta de CORS, ausência do cabeçalho CSP e divulgação de timestamp Unix, considerado de baixo risco.
+A partir deles, propusemos correções como restringir o CORS, configurar o CSP e avaliar a necessidade da exposição do timestamp.”
+**Adrian**
+“Também definimos testes de segurança antes e durante a implementação final.
+
+Um deles verifica o controle de acesso por perfil, testando se o Quiropraxista Majoritário consegue acessar uma função administrativa, enquanto o Quiropraxista e a Secretária têm o acesso negado quando não possuem essa permissão.
+
+Também definimos um teste de acesso direto, para garantir que a proteção continue funcionando mesmo quando alguém tenta acessar diretamente uma URL ou endpoint restrito.
+
+O segundo grupo de testes verifica a validação de entradas e a proteção contra SQL Injection, utilizando entradas válidas, campos vazios, valores muito grandes e entradas maliciosas de teste.”
+
+**Detecção de intrusões - 40 segundos Vitória**
+
+“Além de prevenir ataques, também precisamos ser capazes de detectá-los.
+
+Prevenir significa criar mecanismos para impedir que uma ameaça aconteça, como autenticação e controle de acesso.
+
+Detectar significa identificar uma atividade suspeita que está acontecendo ou já aconteceu.
+
+Para isso, o sistema deve registrar logs de tentativas de login, acessos e alterações de dados, mudanças de permissões, alterações de configuração e atividades suspeitas.
+
+Definimos três regras principais de detecção.
+
+A primeira identifica várias tentativas de login incorretas em pouco tempo.
+
+A segunda detecta tentativas de acesso ou alteração de prontuários por usuários sem autorização.
+
+E a terceira monitora alterações suspeitas em registros financeiros.”
+
+**Pipeline DevSecOps — 35 segundos Adrian**
+
+“Para integrar essas práticas ao desenvolvimento, propusemos um pipeline DevSecOps dividido em quatro etapas: Planejamento, Código, Verificação e Operação.
+
+No planejamento, são definidos os requisitos de segurança e os riscos.
+
+No código, são aplicadas práticas como controle de acesso, validação de entradas e proteção de secrets.
+
+Na verificação, o pipeline pode executar testes automatizados, análise de código com SAST, análise de dependências, secret scanning e, quando possível, DAST.
+
+Por fim, na operação, são monitorados logs, acessos, alterações e possíveis atividades anormais.
+
+Assim, a segurança não fica concentrada em uma única etapa.”
+
+**Iasmin - Conclusão e aprendizado**
+“Com o trabalho, percebemos que segurança não é apenas impedir ataques. É necessário identificar riscos, prevenir, verificar, detectar e corrigir.
+O STRIDE ajudou a encontrar as ameaças, a análise de riscos definiu as prioridades e as etapas seguintes transformaram essas decisões em práticas de segurança.
+Nosso principal aprendizado foi que a segurança precisa acompanhar todo o ciclo de vida do software.”
